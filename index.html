@@ -3,29 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Cek Kelulusan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <title>Pengumuman Kelulusan</title>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <header class="header">
-    <img src="assets/logo.png" alt="Logo Madrasah" class="logo">
-    <h1 class="title">Pengumuman Kelulusan</h1>
-  </header>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <strong>MTSS Mursyidul Falah</strong><br />
+      Tahun Pelajaran 2024–2025
+    </div>
+    <div class="navbar-right">
+      <a href="index.html">Beranda</a>
+      <a href="cek.html">Cek Kelulusan</a>
+    </div>
+  </nav>
 
-  <main class="main">
-    <section class="welcome">
-      <h2>Sambutan Kepala Madrasah</h2>
-      <p>Selamat kepada seluruh siswa yang telah menyelesaikan pendidikannya. 
-        Semoga ilmu yang diperoleh menjadi bekal yang bermanfaat bagi masa depan
-        
-        Kepala Madrasah
-        ABDUL LATIP, S.Pd.I
-        
-        Silahkan Mengecek Keluusan Dengan Mengetikkan NISN.</p>
-    </section>
+  <div class="card">
+    <img src="assets/logo.png" alt="Logo Sekolah" style="width: 100px; margin-bottom: 10px;">
+    <h2>Pengumuman Kelulusan Siswa</h2>
+    <p>Tahun Pelajaran 2024–2025</p>
+    <p>Pengumuman dapat diakses mulai: <strong>02 Juni 2025, Pukul 09:00 WIB</strong></p>
+    <form id="form-cek">
+      <input type="text" id="nisn" placeholder="Masukkan NISN" required />
+      <button type="submit" class="btn">Cari</button>
+    </form>
+    <div id="hasil" class="hasil"></div>
+  </div>
 
-    <a href="cek.html" class="btn">Cek Kelulusan</a>
-  </main>
+  <footer>
+    © 2025 MTSS Mursyidul Falah. Hak Cipta Dilindungi.
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
