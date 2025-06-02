@@ -83,3 +83,13 @@ footer {
 .hasil.tidak-lulus {
   color: red;
 }
+.navbar {
+  text-align: center;
+  padding: 10px;
+}
+
+.navbar img {
+  display: block;
+  margin: 0 auto;
+  width: 80px;
+}
