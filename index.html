@@ -100,9 +100,9 @@
   <script>
     const githubUsername = "mtssmursyidulfalah";
     const repo = "Kelulusan_Murfal";
-    const baseFotoUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/fotosiswa/;
-    const logoUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/assets/logo.png;
-    const csvUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/data/siswa.csv;
+    const baseFotoUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/fotosiswa/`;
+    const logoUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/assets/logo.png`;
+    const csvUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/data/siswa.csv`;
 
     const tanggalPengumuman = new Date("2025-06-02T09:00:00+07:00");
     let siswaData = [];
@@ -149,9 +149,9 @@
       const status = siswa.status.toLowerCase();
       let info = "";
       if (status === "lulus") {
-        info = <div class="info-lulus">SELAMAT, Anda dinyatakan LULUS.<br>Tunggu informasi pengambilan surat kelulusan.</div>;
+        info = `<div class="info-lulus">SELAMAT, Anda dinyatakan LULUS.<br>Tunggu informasi pengambilan surat kelulusan.</div>`;
       } else {
-        info = <div class="info-tidak-lulus">MAAF, Anda dinyatakan TIDAK LULUS.<br>Hubungi Wali Kelas untuk info selanjutnya.</div>;
+        info = `<div class="info-tidak-lulus">MAAF, Anda dinyatakan TIDAK LULUS.<br>Hubungi Wali Kelas untuk info selanjutnya.</div>`;
       }
 
       hasil.innerHTML = `
