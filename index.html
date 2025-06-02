@@ -1,29 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pengumuman Kelulusan - MTSS Mursyidul Falah</title>
-  <link rel="stylesheet" href="assets/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman Kelulusan - MTSS Mursyidul Falah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <h1>MTSS Mursyidul Falah</h1>
-    <p>Tahun Pelajaran 2024–2025</p>
-  </header>
-  <main>
-    <h2>PENGUMUMAN KELULUSAN SISWA</h2>
-    <p>Pengumuman dapat diakses mulai: <strong>17 Mei 2025, Pukul 09:00 WIB</strong></p>
-    <section>
-      <h3>Sambutan Kepala Madrasah</h3>
-      <p>Assalamu’alaikum Wr. Wb.</p>
-      <p>
-        Dengan memanjatkan puji syukur kehadirat Allah SWT... (isi lengkap seperti pada desain).
-      </p>
-      <p><strong>ABDUL LATIP, S.Pd.I</strong><br />Kepala MTSS Mursyidul Falah</p>
-    </section>
-    <a href="cek.html"><button>Cek Kelulusan</button></a>
-  </main>
-  <footer>© 2025 MTSS Mursyidul Falah. Hak Cipta Dilindungi.</footer>
+    <header>
+        <img src="assets/logo.png" alt="Logo Sekolah" class="logo">
+        <h1>MTSS Mursyidul Falah</h1>
+        <p>Tahun Pelajaran 2024–2025</p>
+    </header>
+
+    <main id="page-1" class="card">
+        <h2>PENGUMUMAN KELULUSAN SISWA</h2>
+        <p><strong>Pengumuman dapat diakses mulai:</strong><br>17 Mei 2025, Pukul 09:00 WIB</p>
+        <hr>
+        <h3>Sambutan Kepala Madrasah</h3>
+        <p>Assalamu’alaikum Wr. Wb.<br><br>
+        Dengan memanjatkan puji syukur kehadirat Allah SWT, kami sampaikan selamat kepada seluruh siswa kelas IX MTSS Mursyidul Falah yang telah menyelesaikan pendidikan.<br><br>
+        Wassalamu’alaikum Wr. Wb.<br><br><strong>ABDUL LATIP, S.Pd.I</strong><br>Kepala MTSS Mursyidul Falah</p>
+        <button onclick="goToPage(2)">Cek Kelulusan</button>
+    </main>
+
+    <main id="page-2" class="card hidden">
+        <h2>Cek Kelulusan</h2>
+        <p>Masukkan NISN Anda:</p>
+        <input type="text" id="nisnInput" placeholder="Contoh: 0123456789">
+        <button onclick="cekKelulusan()">Cari</button>
+        <div id="hasil" class="result"></div>
+        <button onclick="goToPage(1)" class="back">Kembali ke Halaman Utama</button>
+    </main>
+
+    <footer>© 2025 MTSS Mursyidul Falah. Hak Cipta Dilindungi.</footer>
+
+    <script src="assets/script.js"></script>
 </body>
 </html>
