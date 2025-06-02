@@ -4,154 +4,73 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pengumuman Kelulusan MTSS MURSYIDUL FALAH</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #4facfe, #00f2fe);
-      color: #333;
+      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
       text-align: center;
       padding: 20px;
     }
     .container {
-      max-width: 700px;
+      max-width: 600px;
       margin: auto;
       background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
     }
-    .hidden {
-      display: none;
-    }
-    .logo {
-      width: 90px;
-      vertical-align: middle;
-      margin-right: 15px;
-    }
-    header {
-      margin-bottom: 25px;
-    }
+    .hidden { display: none; }
+    .logo { width: 70px; vertical-align: middle; margin-right: 10px; }
+    header { margin-bottom: 20px; }
     header h1 {
       display: inline-block;
       vertical-align: middle;
-      font-size: 26px;
-      font-weight: 600;
+      font-size: 24px;
       margin: 0;
       color: #003366;
     }
     .input {
-      padding: 12px;
+      padding: 10px;
       font-size: 16px;
       width: 80%;
       margin: 10px 0;
-      border-radius: 8px;
       border: 1px solid #ccc;
+      border-radius: 6px;
     }
     .button {
-      padding: 12px 25px;
+      padding: 10px 20px;
       font-size: 16px;
-      font-weight: 600;
-      background: linear-gradient(to right, #28a745, #218838);
+      background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
-    .button:hover {
-      background: linear-gradient(to right, #218838, #1e7e34);
-    }
+    .button:hover { background-color: #0056b3; }
     img.foto {
-      width: 160px;
-      margin: 15px auto;
+      width: 150px;
+      margin: 10px auto;
       display: block;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border: 2px solid #007bff;
     }
-    .status-lulus {
-      background: linear-gradient(to right, #00b09b, #96c93d);
+    .info-lulus {
+      background: linear-gradient(to right, #a8e063, #56ab2f);
       color: white;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: bold;
-      margin-top: 15px;
     }
-    .status-tidak-lulus {
-      background: linear-gradient(to right, #ff416c, #ff4b2b);
+    .info-tidak-lulus {
+      background: linear-gradient(to right, #ff512f, #dd2476);
       color: white;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: bold;
-      margin-top: 15px;
     }
   </style>
-  <script>
-    const mtssmursyidulfalah = "mtssmursyidulfalah"; // ganti ini jika username kamu berbeda
-    const repo = "kelulusan_Murfal";
-    const baseFotoUrl = https://raw.githubusercontent.com/${mtssmursyidulfalah}/${repo}/main/fotosiswa/;
-    const logoUrl = https://raw.githubusercontent.com/${mtssmursyidulfalah}/${repo}/main/assets/logo.png;
-    const csvUrl = https://raw.githubusercontent.com/${mtssmursyidulfalah}/${repo}/main/data/siswa.csv;
-
-    const tanggalPengumuman = new Date("2025-06-02T09:00:00+07:00");
-    let siswaData = [];
-
-    function parseCSV(csv) {
-      const lines = csv.trim().split("\n");
-      const header = lines.shift().split(",");
-      return lines.map(line => {
-        const data = line.split(",");
-        let obj = {};
-        header.forEach((h, i) => obj[h.trim()] = data[i]?.trim() || "");
-        return obj;
-      });
-    }
-
-    fetch(csvUrl)
-      .then(response => response.text())
-      .then(csv => siswaData = parseCSV(csv))
-      .catch(() => alert("Gagal memuat data siswa. Periksa URL CSV dan koneksi internet."));
-
-    function bukaHalaman2() {
-      const now = new Date();
-      if (now >= tanggalPengumuman) {
-        document.getElementById('halaman1').classList.add('hidden');
-        document.getElementById('halaman2').classList.remove('hidden');
-      } else {
-        alert("Pengumuman belum tersedia. Silakan cek kembali pada 2 Juni 2025 jam 09:00 WIB.");
-      }
-    }
-
-    function cekKelulusan() {
-      const nisn = document.getElementById('nisn').value.trim();
-      const hasil = document.getElementById('hasil');
-      hasil.innerHTML = "";
-
-      const siswa = siswaData.find(s => s.nisn === nisn);
-      if (!siswa) {
-        hasil.innerHTML = "<p>NISN tidak ditemukan.</p>";
-        return;
-      }
-
-      const status = siswa.status.toLowerCase();
-      const statusHTML = status === "lulus" ?
-        <div class='status-lulus'>SELAMAT, Anda dinyatakan LULUS.<br>Tunggu informasi selanjutnya untuk pengambilan surat kelulusan.</div> :
-        <div class='status-tidak-lulus'>MAAF, Anda dinyatakan TIDAK LULUS.<br>Hubungi wali kelas untuk informasi lebih lanjut.</div>;
-
-      hasil.innerHTML = `
-        <h3>${siswa.nama}</h3>
-        <img src="${baseFotoUrl}${encodeURIComponent(siswa.foto)}" alt="Foto ${siswa.nama}" class="foto" />
-        <p>Kelas: ${siswa.kelas}</p>
-        ${statusHTML}
-      `;
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById("btnCek").addEventListener("click", bukaHalaman2);
-      document.getElementById("btnCari").addEventListener("click", cekKelulusan);
-      document.getElementById("logoSekolah").src = logoUrl;
-    });
-  </script>
 </head>
 <body>
   <div class="container" id="halaman1">
@@ -177,5 +96,76 @@
     <button class="button" id="btnCari">Cari</button>
     <div id="hasil"></div>
   </div>
+
+  <script>
+    const githubUsername = "mtssmursyidulfalah";
+    const repo = "Kelulusan_Murfal";
+    const baseFotoUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/fotosiswa/;
+    const logoUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/assets/logo.png;
+    const csvUrl = https://raw.githubusercontent.com/${githubUsername}/${repo}/main/data/siswa.csv;
+
+    const tanggalPengumuman = new Date("2025-06-02T09:00:00+07:00");
+    let siswaData = [];
+
+    function parseCSV(csv) {
+      const lines = csv.trim().split("\n");
+      const header = lines.shift().split(",");
+      return lines.map(line => {
+        const data = line.split(",");
+        let obj = {};
+        header.forEach((h, i) => obj[h.trim()] = data[i]?.trim());
+        return obj;
+      });
+    }
+
+    fetch(csvUrl)
+      .then(response => response.text())
+      .then(csv => {
+        siswaData = parseCSV(csv);
+      })
+      .catch(() => alert("Gagal memuat data siswa. Periksa file CSV dan koneksi."));
+
+    function bukaHalaman2() {
+      const now = new Date();
+      if (now >= tanggalPengumuman) {
+        document.getElementById('halaman1').classList.add('hidden');
+        document.getElementById('halaman2').classList.remove('hidden');
+      } else {
+        alert("Pengumuman belum tersedia. Silakan cek kembali pada 2 Juni 2025 jam 09:00 WIB.");
+      }
+    }
+
+    function cekKelulusan() {
+      const nisnInput = document.getElementById('nisn').value.trim();
+      const hasil = document.getElementById('hasil');
+      hasil.innerHTML = "";
+
+      const siswa = siswaData.find(s => s.nisn === nisnInput);
+      if (!siswa) {
+        hasil.innerHTML = "<p>NISN tidak ditemukan.</p>";
+        return;
+      }
+
+      const status = siswa.status.toLowerCase();
+      let info = "";
+      if (status === "lulus") {
+        info = <div class="info-lulus">SELAMAT, Anda dinyatakan LULUS.<br>Tunggu informasi pengambilan surat kelulusan.</div>;
+      } else {
+        info = <div class="info-tidak-lulus">MAAF, Anda dinyatakan TIDAK LULUS.<br>Hubungi Wali Kelas untuk info selanjutnya.</div>;
+      }
+
+      hasil.innerHTML = `
+        <h3>${siswa.nama}</h3>
+        <img src="${baseFotoUrl}${encodeURIComponent(siswa.foto)}" alt="Foto ${siswa.nama}" class="foto" onerror="this.onerror=null;this.src='';" />
+        <p>Kelas: ${siswa.kelas}</p>
+        ${info}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById("btnCek").addEventListener("click", bukaHalaman2);
+      document.getElementById("btnCari").addEventListener("click", cekKelulusan);
+      document.getElementById("logoSekolah").src = logoUrl;
+    });
+  </script>
 </body>
 </html>
