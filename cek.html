@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cek Kelulusan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <nav class="navbar">
-    <div class="navbar-center">
+    <div class="navbar-left">
       <strong>MTSS Mursyidul Falah</strong><br />
       Tahun Pelajaran 2024–2025
     </div>
@@ -20,17 +19,22 @@
   </nav>
 
   <div class="card">
+    <!-- Pastikan logo akan muncul setelah file logo.png tersedia -->
     <img src="assets/logo.png" alt="Logo Sekolah" style="width: 100px; margin-bottom: 10px;">
+
     <h2>Pengumuman Kelulusan Siswa</h2>
     <p>Tahun Pelajaran 2024–2025</p>
     <p>Pengumuman dapat diakses mulai: <strong>17 Mei 2025, Pukul 09:00 WIB</strong></p>
+
     <form id="form-cek">
       <input type="text" id="nisn" placeholder="Masukkan NISN" required />
       <button type="submit">Cek Kelulusan</button>
     </form>
+
     <div id="hasil" class="hasil"></div>
   </div>
 
+  <!-- Tambahkan script.js di akhir body -->
   <script src="script.js"></script>
 </body>
 </html>
