@@ -1,25 +1,29 @@
+async function loadData() {
+  const res = await fetch('data/siswa.csv');
+  const text = await res.text();
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  const data = lines.slice(1).map(line => {
+    const cells = line.split(',');
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = cells[i].trim());
+    return obj;
+  });
+  return data;
+}
 
-document.getElementById('form-cek').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const nisn = document.getElementById('nisn').value.trim();
-  fetch('data/siswa.csv')
-    .then(response => response.text())
-    .then(text => {
-      const rows = text.trim().split('\n').slice(1);
-      const hasil = document.getElementById('hasil');
-      let ditemukan = false;
-      for (const row of rows) {
-        const [nama, nisnData, status] = row.split(',');
-        if (nisn === nisnData) {
-          hasil.textContent = status === 'Lulus' ? `Selamat ${nama}, Anda dinyatakan LULUS.` : `Maaf ${nama}, Anda dinyatakan TIDAK LULUS.`;
-          hasil.className = 'hasil ' + (status === 'Lulus' ? 'lulus' : 'tidak-lulus');
-          ditemukan = true;
-          break;
-        }
-      }
-      if (!ditemukan) {
-        hasil.textContent = 'NISN tidak ditemukan.';
-        hasil.className = 'hasil tidak-lulus';
-      }
-    });
-});
+async function cariSiswa() {
+  const nisn = document.getElementById('nisnInput').value.trim();
+  const siswa = (await loadData()).find(s => s.nisn === nisn);
+  const hasil = document.getElementById('hasil');
+  if (siswa) {
+    document.getElementById('fotoSiswa').src = `fotosiswa/${siswa.foto}`;
+    document.getElementById('namaSiswa').textContent = siswa.nama;
+    document.getElementById('kelasSiswa').textContent = siswa.kelas;
+    document.getElementById('statusKelulusan').textContent = siswa.status;
+    hasil.style.display = 'block';
+  } else {
+    hasil.innerHTML = `<p style="color:red;">Data tidak ditemukan. Periksa kembali NISN yang Anda masukkan.</p>`;
+    hasil.style.display = 'block';
+  }
+}
