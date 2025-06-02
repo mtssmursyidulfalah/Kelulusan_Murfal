@@ -15,6 +15,7 @@ async function loadData() {
 async function cariSiswa() {
   const nisn = document.getElementById('nisnInput').value.trim();
   const siswa = (await loadData()).find(s => s.nisn === nisn);
+  
   const hasil = document.getElementById('hasil');
   if (siswa) {
     document.getElementById('fotoSiswa').src = `fotosiswa/${siswa.foto}`;
