@@ -1,171 +1,165 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pengumuman Kelulusan MTSS MURSYIDUL FALAH</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengumuman Kelulusan | MTSS Mursyidul Falah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #c9d6ff, #e2e2e2);
-      text-align: center;
-      padding: 20px;
+      background-color: #f0f4ff;
+      margin: 0;
+    }
+    header, footer {
+      background-color: #1a237e;
+      color: white;
+      padding: 10px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+    nav {
+      float: right;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
     }
     .container {
       max-width: 600px;
-      margin: auto;
+      margin: 40px auto;
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    .hidden { display: none; }
-    .logo { width: 70px; vertical-align: middle; margin-right: 10px; }
-    header { margin-bottom: 20px; }
-    header h1 {
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 24px;
-      margin: 0;
-      color: #003366;
+    .container img {
+      width: 70px;
+      margin-bottom: 10px;
     }
-    .input {
+    h2 {
+      color: #000;
+      font-size: 20px;
+    }
+    input, button {
       padding: 10px;
+      margin-top: 10px;
+      width: 100%;
       font-size: 16px;
-      width: 80%;
-      margin: 10px 0;
-      border: 1px solid #ccc;
       border-radius: 6px;
+      border: 1px solid #ccc;
     }
-    .button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007bff;
+    button {
+      background-color: #2962ff;
       color: white;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
     }
-    .button:hover { background-color: #0056b3; }
-    img.foto {
-      width: 150px;
-      margin: 10px auto;
-      display: block;
-      border-radius: 10px;
-      border: 2px solid #007bff;
+    .hasil {
+      margin-top: 20px;
+      text-align: left;
     }
     .info-lulus {
-      background: linear-gradient(to right, #a8e063, #56ab2f);
+      background: #43a047;
       color: white;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 6px;
+      margin-top: 10px;
       font-weight: bold;
     }
     .info-tidak-lulus {
-      background: linear-gradient(to right, #ff512f, #dd2476);
+      background: #e53935;
       color: white;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 6px;
+      margin-top: 10px;
       font-weight: bold;
+    }
+    .foto-siswa {
+      width: 120px;
+      border-radius: 8px;
+      display: block;
+      margin: 10px 0;
+      border: 2px solid #2962ff;
+    }
+    footer {
+      text-align: center;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="halaman1">
-    <header>
-      <img id="logoSekolah" src="" alt="Logo Sekolah" class="logo" />
-      <h1>MTSS MURSYIDUL FALAH</h1>
-    </header>
-    <h2>PENGUMUMAN KELULUSAN<br />TAHUN PELAJARAN 2024/2025</h2>
-    <p>Alamat: Desa Kampungsawah, Jayakerta, Karawang, Jawa Barat</p>
-    <h3>Sambutan Kepala Madrasah</h3>
-    <p>
-      Assalamu'alaikum Warahmatullahi Wabarakatuh,<br><br>
-      Segala puji bagi Allah SWT, semoga kalian semua mendapatkan hasil terbaik. Selamat kepada yang lulus, teruslah belajar dan berkarya. Bagi yang belum berhasil, tetap semangat dan jangan menyerah.<br><br>
-      Wassalamu'alaikum Warahmatullahi Wabarakatuh.<br><br>
-      <strong>ABDUL LATIP, S.Pd.I</strong>
-    </p>
-    <button class="button" id="btnCek">Cek Kelulusan</button>
+
+  <header>
+    <h1>MTSS Mursyidul Falah</h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#cek">Cek Kelulusan</a>
+    </nav>
+  </header>
+
+  <div class="container" id="cek">
+    <img src="https://raw.githubusercontent.com/mtssmursyidulfalah/Kelulusan_Murfal/main/assets/logo.png" alt="Logo Sekolah">
+    <h2>Pengumuman Kelulusan Siswa<br>Tahun Pelajaran 2024–2025</h2>
+    <p>Pengumuman dapat diakses mulai: <strong>2 Juni 2025, Pukul 09:00 WIB</strong></p>
+    <input type="text" id="nisn" placeholder="Masukkan NISN">
+    <button onclick="cekKelulusan()">Cari</button>
+
+    <div class="hasil" id="hasil"></div>
   </div>
 
-  <div class="container hidden" id="halaman2">
-    <h3>Cek Kelulusan</h3>
-    <input type="text" id="nisn" class="input" placeholder="Masukkan NISN" />
-    <button class="button" id="btnCari">Cari</button>
-    <div id="hasil"></div>
-  </div>
+  <footer>
+    © 2025 MTSS Mursyidul Falah. Hak Cipta Dilindungi.
+  </footer>
 
   <script>
-    const githubUsername = "mtssmursyidulfalah";
-    const repo = "Kelulusan_Murfal";
-    const baseFotoUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/fotosiswa/`;
-    const logoUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/assets/logo.png`;
-    const csvUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo}/main/data/siswa.csv`;
-
-    const tanggalPengumuman = new Date("2025-06-02T09:00:00+07:00");
+    const csvUrl = "https://raw.githubusercontent.com/mtssmursyidulfalah/Kelulusan_Murfal/main/data/siswa.csv";
+    const fotoBase = "https://raw.githubusercontent.com/mtssmursyidulfalah/Kelulusan_Murfal/main/fotosiswa/";
     let siswaData = [];
 
-    function parseCSV(csv) {
-      const lines = csv.trim().split("\n");
-      const header = lines.shift().split(",");
-      return lines.map(line => {
-        const data = line.split(",");
-        let obj = {};
-        header.forEach((h, i) => obj[h.trim()] = data[i]?.trim());
-        return obj;
-      });
-    }
-
     fetch(csvUrl)
-      .then(response => response.text())
+      .then(res => res.text())
       .then(csv => {
-        siswaData = parseCSV(csv);
+        const lines = csv.trim().split('\n');
+        const headers = lines[0].split(',');
+        siswaData = lines.slice(1).map(line => {
+          const cells = line.split(',');
+          let obj = {};
+          headers.forEach((h, i) => obj[h.trim()] = cells[i]?.trim());
+          return obj;
+        });
       })
-      .catch(() => alert("Gagal memuat data siswa. Periksa file CSV dan koneksi."));
-
-    function bukaHalaman2() {
-      const now = new Date();
-      if (now >= tanggalPengumuman) {
-        document.getElementById('halaman1').classList.add('hidden');
-        document.getElementById('halaman2').classList.remove('hidden');
-      } else {
-        alert("Pengumuman belum tersedia. Silakan cek kembali pada 2 Juni 2025 jam 09:00 WIB.");
-      }
-    }
+      .catch(() => {
+        document.getElementById('hasil').innerHTML = "<p style='color:red;'>Gagal memuat data siswa.</p>";
+      });
 
     function cekKelulusan() {
-      const nisnInput = document.getElementById('nisn').value.trim();
+      const nisn = document.getElementById('nisn').value.trim();
       const hasil = document.getElementById('hasil');
       hasil.innerHTML = "";
 
-      const siswa = siswaData.find(s => s.nisn === nisnInput);
+      const siswa = siswaData.find(s => s.nisn === nisn);
       if (!siswa) {
-        hasil.innerHTML = "<p>NISN tidak ditemukan.</p>";
+        hasil.innerHTML = "<p style='color:red;'>NISN tidak ditemukan.</p>";
         return;
       }
 
       const status = siswa.status.toLowerCase();
-      let info = "";
-      if (status === "lulus") {
-        info = `<div class="info-lulus">SELAMAT, Anda dinyatakan LULUS.<br>Tunggu informasi pengambilan surat kelulusan.</div>`;
-      } else {
-        info = `<div class="info-tidak-lulus">MAAF, Anda dinyatakan TIDAK LULUS.<br>Hubungi Wali Kelas untuk info selanjutnya.</div>`;
-      }
-
+      const isLulus = status === "lulus";
       hasil.innerHTML = `
         <h3>${siswa.nama}</h3>
-        <img src="${baseFotoUrl}${encodeURIComponent(siswa.foto)}" alt="Foto ${siswa.nama}" class="foto" onerror="this.onerror=null;this.src='';" />
-        <p>Kelas: ${siswa.kelas}</p>
-        ${info}`;
+        <img src="${fotoBase}${siswa.foto}" class="foto-siswa" alt="Foto ${siswa.nama}" onerror="this.style.display='none'">
+        <p><strong>Kelas:</strong> ${siswa.kelas}</p>
+        <div class="${isLulus ? 'info-lulus' : 'info-tidak-lulus'}">
+          ${isLulus ? 'SELAMAT, Anda dinyatakan <strong>LULUS</strong>' : 'MAAF, Anda <strong>TIDAK LULUS</strong>'}
+        </div>
+      `;
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById("btnCek").addEventListener("click", bukaHalaman2);
-      document.getElementById("btnCari").addEventListener("click", cekKelulusan);
-      document.getElementById("logoSekolah").src = logoUrl;
-    });
   </script>
+
 </body>
 </html>
