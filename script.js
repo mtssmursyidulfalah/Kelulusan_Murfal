@@ -1,26 +1,29 @@
-
-let siswa = [
-    {"NISN": "0107813711", "NAMA": "AIDA RIZKI ANANDA", "KELAS": "IX-A", "STATUS": "LULUS", "FOTO": "0107813711.jpg"}
-];
-
-function goToPage(pageNumber) {
-    document.getElementById('page-1').classList.add('hidden');
-    document.getElementById('page-2').classList.add('hidden');
-    document.getElementById('page-' + pageNumber).classList.remove('hidden');
+async function loadData() {
+  const res = await fetch('data/siswa.csv');
+  const text = await res.text();
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  const data = lines.slice(1).map(line => {
+    const cells = line.split(',');
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = cells[i].trim());
+    return obj;
+  });
+  return data;
 }
 
-function cekKelulusan() {
-    const nisn = document.getElementById('nisnInput').value.trim();
-    const data = siswa.find(s => s.NISN === nisn);
-    const hasilDiv = document.getElementById('hasil');
-
-    if (data) {
-        hasilDiv.className = "result lulus";
-        hasilDiv.innerHTML = `<p>Selamat! Anda dinyatakan <strong>${data.STATUS}</strong></p>
-        <img src="fotosiswa/${data.FOTO}" alt="Foto Siswa" style="width: 100px; border-radius: 50%; margin: 10px 0;">
-        <p><strong>${data.NAMA}</strong><br>Kelas: ${data.KELAS}</p>`;
-    } else {
-        hasilDiv.className = "result";
-        hasilDiv.innerHTML = "<p>NISN tidak ditemukan.</p>";
-    }
+async function cariSiswa() {
+  const nisn = document.getElementById('nisnInput').value.trim();
+  const siswa = (await loadData()).find(s => s.nisn === nisn);
+  const hasil = document.getElementById('hasil');
+  if (siswa) {
+    document.getElementById('fotoSiswa').src = `fotosiswa/${siswa.foto}`;
+    document.getElementById('namaSiswa').textContent = siswa.nama;
+    document.getElementById('kelasSiswa').textContent = siswa.kelas;
+    document.getElementById('statusKelulusan').textContent = siswa.status;
+    hasil.style.display = 'block';
+  } else {
+    hasil.innerHTML = `<p style="color:red;">Data tidak ditemukan. Periksa kembali NISN yang Anda masukkan.</p>`;
+    hasil.style.display = 'block';
+  }
 }
